@@ -12,6 +12,12 @@ group :test do
   gem 'webrat', '0.7.1'
 end
 
+gem 'autotest-growl'
+gem 'autotest-fsevent'
+
+group :development, :test do
+	gem 'autotest'
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
