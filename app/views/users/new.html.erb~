@@ -1,22 +1,53 @@
-<<h1>Inscription</h1>
+<h1>Inscription</h1>
 
 <%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :nom %><br />
     <%= f.text_field :nom %>
   </div>
+  
+  <div class="field">
+    <%= f.label :"Date de Naissance" %><br />
+    <%= f.date_select :date, :start_year=>1985, :use_month_numbers=>true, :order=>[:day, :month, :year]%>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Poids actuel" %><br />
+    <%= f.text_field :poids_actu %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Poids idéal" %><br />
+    <%= f.text_field :poids_ideal %>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
+  
+   <div class="field">
+      <%= f.check_box :faire_sport, :valeur_on=>1, :valeur_off=>0 %>
+      <%= f.label :"je ne fais pas de sport" %>
+      <%= f.check_box :aimer_faire_sport, :valeur_on=>1, :valeur_off=>0 %>
+      <%= f.label :"j'aimerais faire du sport" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Joindre le CV " %>
+    <%= file_field_tag 'file', :accept => 'image/jpeg', :multiple => false %>
+  </div>
+
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </div>
+
   <div class="field">
     <%= f.label :password_confirmation, "Confirmation" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+
   <div class="actions">
     <%= f.submit "Inscription" %>
   </div>

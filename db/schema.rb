@@ -14,7 +14,12 @@ ActiveRecord::Schema.define(:version => 20140305101509) do
 
   create_table "users", :force => true do |t|
     t.string   "nom"
+    t.date     "date"
+    t.string   "poids_actu"
+    t.string   "poids_ideal"
     t.string   "email"
+    t.string   "faire_sport"
+    t.string   "aimer_faire_sport"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password"
