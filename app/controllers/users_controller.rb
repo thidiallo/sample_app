@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     @titre = @user.nom
   end
 
+  def listecv
+    @liste = User.find(:all)
+  end
+
   def new
     @user = User.new
     @titre = "Inscription"

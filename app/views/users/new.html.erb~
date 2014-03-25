@@ -5,6 +5,11 @@
     <%= f.label :nom %><br />
     <%= f.text_field :nom %>
   </div>
+ 
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
   
   <div class="field">
     <%= f.label :"Date de Naissance" %><br />
@@ -13,29 +18,32 @@
 
   <div class="field">
     <%= f.label :"Poids actuel" %><br />
-    <%= f.text_field :poids_actu %>
+    <%= f.text_field :poids_actu, type: "number" %>
   </div>
 
   <div class="field">
     <%= f.label :"Poids idéal" %><br />
-    <%= f.text_field :poids_ideal %>
+    <%= f.text_field :poids_ideal, type: "number" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :taille %><br />
+    <%= f.text_field :taille %>
+  </div>
+  
+  <div class="field">
+      <%= f.check_box :faire_sport, :valeur_on=>1, :valeur_off=>0 %>
+      <%= f.label :"faites-vous du sport actuellement?" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  
-   <div class="field">
-      <%= f.check_box :faire_sport, :valeur_on=>1, :valeur_off=>0 %>
-      <%= f.label :"je ne fais pas de sport" %>
       <%= f.check_box :aimer_faire_sport, :valeur_on=>1, :valeur_off=>0 %>
-      <%= f.label :"j'aimerais faire du sport" %>
+      <%= f.label :"aimeriez-vous faire du sport?" %>
   </div>
 
   <div class="field">
     <%= f.label :"Joindre le CV " %>
-    <%= file_field_tag 'file', :accept => 'image/jpeg', :multiple => false %>
+    <%= f.file_field :cv %>
   </div>
 
   <div class="field">

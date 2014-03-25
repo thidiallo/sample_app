@@ -1,7 +1,3 @@
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.nom %>
-</h1>
 <table class="profile" summary="Information profil">
   <tr>
     <td class="main">
@@ -11,9 +7,18 @@
       </h1>
     </td>
     <td class="sidebar round">
-      <strong>Nom</strong> <%= @user.nom %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+      <strong>Age : </strong> <%= @user.age %><br />
+      <strong>Poids actuel : </strong> <%= @poids_actu %><br />
+      <strong>Poids idéal : </strong> <%= @user.poids_ideal %><br />
+      <strong>IMC  : </strong> <%= @user.calc_imc %><br />
+      <strong>Fait du sport ? </strong> <%= @user.faitSport? %><br />
+      <strong>Aimerai faire du sport ? </strong> <%= @user.aimeraiFaireSport? %><br />
     </td>
   </tr>
 </table>
 
+<div>
+      <%= link_to "Liste des cv des utilisateurs " , listeUser_path %> 
+</div>
+
+ecv

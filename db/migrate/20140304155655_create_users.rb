@@ -5,9 +5,11 @@ class CreateUsers < ActiveRecord::Migration
       t.column :date, :date
       t.string :poids_actu
       t.string :poids_ideal
+      t.string :taille
       t.string :email
       t.string :faire_sport
       t.string :aimer_faire_sport
+      t.binary :cv
 
       t.timestamps
     end
