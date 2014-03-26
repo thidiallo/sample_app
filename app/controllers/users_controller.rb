@@ -10,8 +10,12 @@ class UsersController < ApplicationController
     @liste = User.find(:all)
   end
 
+  def liste_non_sportif
+    @liste = User.find(:faire_sport == "0", :aimer_faire_sport == "1")
+  end
+
   def new
-    @user = User.new
+    @user = User.new	
     @titre = "Inscription"
   end
 

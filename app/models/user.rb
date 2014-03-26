@@ -2,7 +2,7 @@ require 'digest'
 class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :nom, :date, :poids_actu, :poids_ideal, :taille,
-                  :email, :faire_sport, :aimer_faire_sport, :password, :password_confirmation, :cv
+                  :email, :faire_sport, :aimer_faire_sport, :password, :password_confirmation, :attach
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   taille_regex = /\A[123](\.\d{1,2})?\z/
@@ -13,33 +13,47 @@ class User < ActiveRecord::Base
 
   validates :taille, :presence => true, :format => { :with => taille_regex }
   validates :poids_actu, :presence => true, :format => { :with => poids_regex }
-  validates :poids_ideal, :presence => true, :format => { :with => poids_regex }, :if  => :estPoidsSuperieur?
+  validates :poids_ideal, :presence => true, :format => { :with => poids_regex }, :numericality => {:less_than=> :poids_actu}
 
   validates :password, :presence => true, :confirmation => true, :length => { :within => 6..40 }
 
-  has_attached_file :cv
-  validates_attachment_content_type :cv, :presence => true, :content_type => ["application/pdf"]  
+  has_attached_file :attach, :presence => true
+  #validates_attachment_content_type :attach, :content_type => ["application/pdf"]  
                    
   before_save :encrypt_password
 
-  def faitSport?
+  def faitSport
+    if faire_sport == "1"
       return "oui"
+    else
+      return "non"
+    end
   end
 
-  def aimeraiFaireSport?
+  def aimeraiFaireSport
+    if aimer_faire_sport == "1"
+      return "oui"
+    else
       return "non"
+    end
   end
  
+    # methode de calcul de l'IMC
   def calc_imc
-      return 20
+      return (poids_actu / (taille*taille)).to_s()
   end
 
+    #Methode de calcul de l'age
   def age
-      return 10;
-  end
-
-  def estPoidsSuperieur?
-    return :poids_actu > :poids_ideal
+     if Date.today.year - date.year > 1
+        return (Date.today.year - date.year).to_s() +" ans"
+     elsif Date.today.year - date.year == 1
+        return 1.to_s() +"an"
+     elsif Date.today.month - date.month >= 1
+        return (Date.today.month - date.month).to-s() + " mois"
+     else
+        return (Date.today.day - date.day).to_s() + " jours"
+     end
   end
 
   def has_password?(password_soumis)

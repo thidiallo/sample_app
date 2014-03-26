@@ -1,7 +1,8 @@
+<h1>Liste des CV de tous les utilisateurs</h1>
 <ul class="users">
   <% @liste.each do |l| %>
     <li>
-      <%= link_to l.nom %>
+      <%= link_to l.nom, l.cv.url %>
     </li>
   <% end %>
 </ul>

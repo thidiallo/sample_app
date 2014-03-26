@@ -5,6 +5,7 @@ SampleApp::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   get "users/new"
 
+  match '/listeNonSportif', :to => 'users#liste_non_sportif'
   match '/listeUser', :to => 'users#listecv'
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'

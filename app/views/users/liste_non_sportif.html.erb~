@@ -1,0 +1,8 @@
+<h1>Liste des utilisateurs non sportifs désirant faire du sport</h1>
+<ul class="users">
+  <% @liste.each do |l| %>
+    <li>
+     <%= l.nom %> <%= link_to l.nom, l.cv.url %>
+    </li>
+  <% end %>
+</ul>

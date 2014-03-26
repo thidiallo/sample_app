@@ -8,15 +8,20 @@
     </td>
     <td class="sidebar round">
       <strong>Age : </strong> <%= @user.age %><br />
-      <strong>Poids actuel : </strong> <%= @poids_actu %><br />
+      <strong>Poids actuel : </strong> <%= @user.poids_actu %><br />
       <strong>Poids idéal : </strong> <%= @user.poids_ideal %><br />
       <strong>IMC  : </strong> <%= @user.calc_imc %><br />
-      <strong>Fait du sport ? </strong> <%= @user.faitSport? %><br />
-      <strong>Aimerai faire du sport ? </strong> <%= @user.aimeraiFaireSport? %><br />
+      <strong>Fait du sport : </strong> <%= @user.faitSport %><br />
+      <strong>Aimerai faire du sport : </strong> <%= @user.aimeraiFaireSport ;%><br />
+      <%= link_to "Afficher CV " , @user.attach.url %> 
     </td>
   </tr>
 </table>
 
 <div>
-      <%= link_to "Liste des cv des utilisateurs " , listeUser_path %> 
+      <%= link_to "Liste des utilisateurs et leurs CV " , listeUser_path %> 
+</div>
+
+<div>
+      <%= link_to "Liste des gens non sportifs désirant le faire " , listeNonSportif_path %> 
 </div>

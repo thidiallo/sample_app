@@ -3,13 +3,12 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :nom
       t.column :date, :date
-      t.string :poids_actu
-      t.string :poids_ideal
-      t.string :taille
+      t.float :poids_actu
+      t.float :poids_ideal
+      t.float :taille
       t.string :email
       t.string :faire_sport
       t.string :aimer_faire_sport
-      t.binary :cv
 
       t.timestamps
     end
