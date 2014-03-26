@@ -1,8 +1,24 @@
-<h1>Liste des CV de tous les utilisateurs</h1>
-<ul class="users">
+<h1>Liste des utilisateurs et leurs CV </h1>
+
+<table class="profile" summary="Information profil">
+  <tr>
+    <td>
+         <h2>Nom </h2>
+    </td>
+    <td>
+         <strong>E-mail </strong>
+    </td>
+    <td>
+         <strong>CV </strong>
+    </td>
+  </tr>
+  
   <% @liste.each do |l| %>
-    <li>
-      <%= link_to l.nom, l.cv.url %>
-    </li>
+   <tr>
+      <td> <%= l.nom %> </td>
+      <td> <%= l.email %> </td>
+      <td> <%= link_to 'print', l.attach.url %> </td>  
+   </tr>  
   <% end %>
-</ul>
+</table>
+

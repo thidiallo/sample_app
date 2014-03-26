@@ -1,8 +1,22 @@
 <h1>Liste des utilisateurs non sportifs désirant faire du sport</h1>
-<ul class="users">
+<table class="profile" summary="Information profil">
+  <tr>
+    <td>
+         <strong>Nom </strong>
+    </td>
+    <td>
+         <strong>E-mail </strong>
+    </td>
+    <td>
+         <strong>CV </strong>
+    </td>
+  </tr>
+  
   <% @liste.each do |l| %>
-    <li>
-     <%= l.nom %> <%= link_to 'cv', l.cv.url %>
-    </li>
+   <tr>
+      <td> <%= l.nom %> </td>
+      <td> <%= l.email %> </td>
+      <td> <%= link_to 'print', l.attach.url %> </td>  
+   </tr>  
   <% end %>
-</ul>
+</table>

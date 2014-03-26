@@ -13,7 +13,7 @@
       <strong>IMC  : </strong> <%= @user.calc_imc %><br />
       <strong>Fait du sport : </strong> <%= @user.faitSport %><br />
       <strong>Aimerai faire du sport : </strong> <%= @user.aimeraiFaireSport ;%><br />
-      <%= link_to "Afficher CV " , @user.cv.url %> 
+      <%= link_to "Afficher CV " , @user.attach.url %> 
     </td>
   </tr>
 </table>

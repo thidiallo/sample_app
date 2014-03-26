@@ -11,12 +11,21 @@ class UsersController < ApplicationController
   end
 
   def liste_non_sportif
-    @liste = User.find(:faire_sport == "0", :aimer_faire_sport == "1")
+    @liste = User.where({faire_sport: '0'} && {aimer_faire_sport: '1'})
   end
 
   def new
     @user = User.new	
     @titre = "Inscription"
+  end
+
+  def show_pdf
+    respond_to do |format|
+      format.html { render :show_pdf }
+      format.pdf { 
+        render :pdf => "show_pdf", :layout => 'pdf.html'
+      }
+    end
   end
 
   def create

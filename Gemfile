@@ -6,6 +6,10 @@ gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'rake','0.8.7'
 gem 'paperclip', '3.4.1'
 
+gem "haml-rails"
+gem 'wkhtmltopdf-binary' 
+gem 'wicked_pdf'
+
 group :development do
   gem 'rspec-rails', '2.5.0'
   gem 'annotate', '2.4.0'
