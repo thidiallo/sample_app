@@ -1,5 +1,3 @@
-<h1>Liste des utilisateurs et leurs CV </h1>
-
 <table class="profile" summary="Information profil">
   <tr>
     <td>

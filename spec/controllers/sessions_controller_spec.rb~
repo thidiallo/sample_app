@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe SessionsController do
@@ -5,7 +6,7 @@ describe SessionsController do
 
   describe "GET 'new'" do
 
-    it "devrait réussir" do
+    it "devrait reussir" do
       get :new
       response.should be_success
     end
@@ -75,6 +76,16 @@ describe SessionsController do
         post :create, :session => @attr
         response.should redirect_to(user_path(@user))
       end
+    end
+  end
+
+  describe "DELETE 'destroy'" do
+
+    it "devrait déconnecter un utilisateur" do
+      test_sign_in(Factory(:user))
+      delete :destroy
+      controller.should_not be_signed_in
+      response.should redirect_to(root_path)
     end
   end
 

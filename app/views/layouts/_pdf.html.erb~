@@ -2,7 +2,10 @@
   %head
     %meta{ "http-equiv" => "content-type", content: "text/html; charset=utf-8" }
   %body
-Bonjour
-      <%= yield %>
+    #header
+      Ma Société test
 
+    #content
+      = yield
 
+    #footer

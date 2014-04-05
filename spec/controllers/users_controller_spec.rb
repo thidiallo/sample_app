@@ -16,6 +16,7 @@ describe UsersController do
     end
   end
 
+     # Test sur l'action show
   describe "GET 'show'" do
 
     before(:each) do
@@ -48,7 +49,35 @@ describe UsersController do
     end
 
   end
+  
+  # Test sur l'action listeUserCV
+  describe "GET 'listeUserCV'" do
+    it "devrait avoir 'Liste des utilisateurs et leurs CV' en haut de la page" do
+      get :listeUserCV
+      response.should have_selector("div>h1", :content => "Liste des utilisateurs et leurs CV")
+    end
 
+  end
+  
+  # Test sur l'action listeNonSportif
+  describe "GET 'listeNonSportif'" do
+    it "devrait avoir 'Liste des utilisateurs non sportifs désirant faire du sport' en haut de la page" do
+      get :listeNonSportif
+      response.should have_selector("h1", :content => "Liste des utilisateurs non sportifs désirant faire du sport")
+    end
+
+  end
+  
+  # Test sur l'action listePdf
+  describe "GET 'listePdf'" do
+    it "devrait avoir 'Nom' comme titre"  do
+      get :listePdf
+      response.should have_selector("table>tr>td>strong", :content => "Nom")
+    end
+
+  end
+
+      # Test sur l'action create
   describe "POST 'create'" do
 
     describe "échec" do

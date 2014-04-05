@@ -6,26 +6,32 @@ class UsersController < ApplicationController
     @titre = @user.nom
   end
 
-  def listecv
+  def listePdf
+   @titre = "Liste des utilisateurs en pdf"
+   @liste = User.find(:all)
+    
+    pdf_content = PdfDocument.new.to_pdf
+
+    respond_to do |format|
+      format.pdf do
+        send_data pdf_content, filename: "liste.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
+  end
+
+  def listeUserCV
+    @titre = "Liste des utilisateurs"
     @liste = User.find(:all)
   end
 
-  def liste_non_sportif
+  def listeNonSportif
+    @titre = "Liste des utilisateurs non sportifs"
     @liste = User.where({faire_sport: '0'} && {aimer_faire_sport: '1'})
   end
 
   def new
     @user = User.new	
     @titre = "Inscription"
-  end
-
-  def show_pdf
-    respond_to do |format|
-      format.html { render :show_pdf }
-      format.pdf { 
-        render :pdf => "show_pdf", :layout => 'pdf.html'
-      }
-    end
   end
 
   def create
